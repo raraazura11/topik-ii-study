@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vocabulary - TOPIK II Master</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-gray-50 font-sans">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <a href="index.html" class="flex items-center space-x-2">
+                        <span class="text-2xl font-bold text-blue-600">TOPIK</span>
+                        <span class="text-2xl font-light text-gray-600">II</span>
+                    </a>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="text-gray-600 hover:text-blue-600 transition">Home</a>
+                    <a href="vocabulary.html" class="text-blue-600 font-medium hover:text-blue-800 transition">Vocabulary</a>
+                    <a href="reading.html" class="text-gray-600 hover:text-blue-600 transition">Reading</a>
+                    <a href="listening.html" class="text-gray-600 hover:text-blue-600 transition">Listening</a>
+                    <a href="writing.html" class="text-gray-600 hover:text-blue-600 transition">Writing</a>
+                    <a href="grammar.html" class="text-gray-600 hover:text-blue-600 transition">Grammar</a>
+                </div>
+                <button id="mobile-menu-btn" class="md:hidden text-gray-600">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
+            <div class="px-4 py-2 space-y-2">
+                <a href="index.html" class="block py-2 text-gray-600 hover:text-blue-600">Home</a>
+                <a href="vocabulary.html" class="block py-2 text-blue-600 font-medium">Vocabulary</a>
+                <a href="reading.html" class="block py-2 text-gray-600 hover:text-blue-600">Reading</a>
+                <a href="listening.html" class="block py-2 text-gray-600 hover:text-blue-600">Listening</a>
+                <a href="writing.html" class="block py-2 text-gray-600 hover:text-blue-600">Writing</a>
+                <a href="grammar.html" class="block py-2 text-gray-600 hover:text-blue-600">Grammar</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="bg-gradient-to-r from-blue-600 to-indigo-700 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4">
+            <h1 class="text-3xl md:text-4xl font-bold mb-4">Vocabulary</h1>
+            <p class="text-blue-100 text-lg">Master essential TOPIK II vocabulary with flashcards and examples</p>
+        </div>
+    </section>
+
+    <!-- Flashcard Mode Toggle -->
+    <section class="py-6 bg-white border-b">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex flex-wrap items-center justify-between gap-4">
+                <div class="flex items-center space-x-4">
+                    <button id="list-view-btn" class="px-4 py-2 rounded-lg bg-blue-600 text-white font-medium transition">
+                        List View
+                    </button>
+                    <button id="flashcard-view-btn" class="px-4 py-2 rounded-lg bg-gray-200 text-gray-700 font-medium hover:bg-gray-300 transition">
+                        Flashcards
+                    </button>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <input type="text" id="search-input" placeholder="Search vocabulary..." class="px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 w-64">
+                    <select id="category-filter" class="px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500">
+                        <option value="all">All Categories</option>
+                        <option value="daily">Daily Life</option>
+                        <option value="education">Education</option>
+                        <option value="work">Work & Business</option>
+                        <option value="society">Society</option>
+                        <option value="culture">Culture</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vocabulary Stats -->
+    <section class="py-4 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex items-center space-x-6 text-sm">
+                <span class="text-gray-600">Total: <span id="total-count" class="font-bold text-blue-600">0</span> words</span>
+                <span class="text-gray-600">Showing: <span id="showing-count" class="font-bold text-green-600">0</span> words</span>
+                <span class="text-gray-600">Mastered: <span id="mastered-count" class="font-bold text-purple-600">0</span> words</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- List View -->
+    <section id="list-view" class="py-8">
+        <div class="max-w-7xl mx-auto px-4">
+            <div id="vocabulary-list" class="grid gap-4">
+                <!-- Vocabulary items will be loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Flashcard View -->
+    <section id="flashcard-view" class="py-8 hidden">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-8">
+                <p class="text-gray-600">Click on the card to flip it. Use arrow buttons to navigate.</p>
+            </div>
+            <div class="flex justify-center items-center space-x-8">
+                <button id="prev-card" class="p-3 rounded-full bg-gray-200 hover:bg-gray-300 transition">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                    </svg>
+                </button>
+                <div id="flashcard-container" class="w-full max-w-md">
+                    <div id="flashcard" class="flashcard cursor-pointer">
+                        <div class="flashcard-inner">
+                            <div class="flashcard-front bg-white rounded-2xl shadow-xl p-8">
+                                <div class="text-4xl font-bold text-gray-800 mb-4" id="card-korean">-</div>
+                                <div class="text-lg text-gray-500" id="card-romanization">-</div>
+                            </div>
+                            <div class="flashcard-back bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl shadow-xl p-8 text-white">
+                                <div class="text-3xl font-bold mb-4" id="card-english">-</div>
+                                <div class="text-lg opacity-90 mb-4" id="card-example">-</div>
+                                <div class="text-sm opacity-75" id="card-example-translation">-</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button id="next-card" class="p-3 rounded-full bg-gray-200 hover:bg-gray-300 transition">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                </button>
+            </div>
+            <div class="text-center mt-8">
+                <p class="text-gray-600">Card <span id="current-card-num">1</span> of <span id="total-cards">0</span></p>
+                <button id="mark-mastered" class="mt-4 px-6 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition">
+                    Mark as Mastered
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12 mt-12">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">TOPIK II Master</h3>
+                    <p class="text-gray-400">Your comprehensive guide to mastering Korean proficiency for the TOPIK II exam.</p>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="vocabulary.html" class="hover:text-white transition">Vocabulary</a></li>
+                        <li><a href="reading.html" class="hover:text-white transition">Reading</a></li>
+                        <li><a href="listening.html" class="hover:text-white transition">Listening</a></li>
+                        <li><a href="writing.html" class="hover:text-white transition">Writing</a></li>
+                        <li><a href="grammar.html" class="hover:text-white transition">Grammar</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">About TOPIK II</h4>
+                    <p class="text-gray-400">TOPIK II is the intermediate-advanced level test of the Test of Proficiency in Korean, designed for levels 3-6.</p>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2026 TOPIK II Master. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/vocabulary.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

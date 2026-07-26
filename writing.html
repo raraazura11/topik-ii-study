@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Writing - TOPIK II Master</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-gray-50 font-sans">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <a href="index.html" class="flex items-center space-x-2">
+                        <span class="text-2xl font-bold text-blue-600">TOPIK</span>
+                        <span class="text-2xl font-light text-gray-600">II</span>
+                    </a>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="text-gray-600 hover:text-blue-600 transition">Home</a>
+                    <a href="vocabulary.html" class="text-gray-600 hover:text-blue-600 transition">Vocabulary</a>
+                    <a href="reading.html" class="text-gray-600 hover:text-blue-600 transition">Reading</a>
+                    <a href="listening.html" class="text-gray-600 hover:text-blue-600 transition">Listening</a>
+                    <a href="writing.html" class="text-blue-600 font-medium hover:text-blue-800 transition">Writing</a>
+                    <a href="grammar.html" class="text-gray-600 hover:text-blue-600 transition">Grammar</a>
+                </div>
+                <button id="mobile-menu-btn" class="md:hidden text-gray-600">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
+            <div class="px-4 py-2 space-y-2">
+                <a href="index.html" class="block py-2 text-gray-600 hover:text-blue-600">Home</a>
+                <a href="vocabulary.html" class="block py-2 text-gray-600 hover:text-blue-600">Vocabulary</a>
+                <a href="reading.html" class="block py-2 text-gray-600 hover:text-blue-600">Reading</a>
+                <a href="listening.html" class="block py-2 text-gray-600 hover:text-blue-600">Listening</a>
+                <a href="writing.html" class="block py-2 text-blue-600 font-medium">Writing</a>
+                <a href="grammar.html" class="block py-2 text-gray-600 hover:text-blue-600">Grammar</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="bg-gradient-to-r from-orange-500 to-red-600 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4">
+            <h1 class="text-3xl md:text-4xl font-bold mb-4">Writing Practice</h1>
+            <p class="text-orange-100 text-lg">Improve your Korean writing skills with guided prompts</p>
+        </div>
+    </section>
+
+    <!-- Writing Content -->
+    <section class="py-8">
+        <div class="max-w-4xl mx-auto px-4">
+            <!-- Writing Tips -->
+            <div class="bg-orange-50 rounded-2xl p-6 mb-8 border border-orange-200">
+                <h3 class="font-bold text-orange-800 mb-3 flex items-center">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    TOPIK II Writing Tips
+                </h3>
+                <ul class="space-y-2 text-orange-700">
+                    <li>• Use formal written style (해요체 or 합쇼체)</li>
+                    <li>• Organize your essay with clear introduction, body, and conclusion</li>
+                    <li>• Use connecting words like 하지만, 따라서, 그리고</li>
+                    <li>• Aim for 300-500 words for Task 54</li>
+                </ul>
+            </div>
+
+            <!-- Writing Prompt 1 -->
+            <article class="bg-white rounded-2xl shadow-lg p-8 mb-8">
+                <div class="flex items-center justify-between mb-6">
+                    <span class="px-3 py-1 bg-orange-100 text-orange-700 rounded-full text-sm font-medium">Task 53 - Description</span>
+                    <span class="text-gray-500 text-sm">200-300 words</span>
+                </div>
+                
+                <h2 class="text-2xl font-bold text-gray-800 mb-4 korean-text">일상생활에서의 경험</h2>
+                
+                <div class="bg-gray-50 rounded-xl p-6 mb-6">
+                    <p class="text-gray-700 korean-text">
+                        아래의 그림을 보고, 일상생활에서의 경험을 글로 써 주세요. 다음의 내용을 포함하여 글을 써 주세요.
+                    </p>
+                    <ul class="mt-4 space-y-2 text-gray-700 korean-text">
+                        <li>• 그림에서 볼 수 있는 상황을 묘사해 주세요.</li>
+                        <li>• 그 상황에서 어떤 일이 일어났는지 설명해 주세요.</li>
+                        <li>• 그 경험에 대한 여러분의 생각을 써 주세요.</li>
+                    </ul>
+                </div>
+
+                <!-- Writing Area -->
+                <div class="mb-6">
+                    <div class="flex items-center justify-between mb-2">
+                        <label class="font-medium text-gray-700">Your Answer:</label>
+                        <span id="word-count-1" class="text-sm text-gray-500">0 words</span>
+                    </div>
+                    <textarea 
+                        id="writing-area-1" 
+                        class="w-full h-64 p-4 border rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-orange-500 korean-text text-lg"
+                        placeholder="여기에 한국어로 작성하세요..."
+                    ></textarea>
+                </div>
+
+                <!-- Sample Answer -->
+                <div class="border-t pt-6">
+                    <button class="show-sample text-orange-600 hover:text-orange-800 font-medium flex items-center space-x-2">
+                        <span>Show Sample Answer</span>
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <div class="sample-answer hidden mt-4 p-6 bg-orange-50 rounded-xl">
+                        <h4 class="font-bold text-orange-800 mb-3">Sample Answer:</h4>
+                        <p class="text-gray-700 leading-relaxed korean-text">
+                            지난 주말에 친구와 함께 시내에 있는 큰 서점에 갔습니다. 우리는 각자 관심 있는 책을 찾고 있었습니다. 그런데 갑자기 어떤 아이가 넘어져서 울기 시작했습니다. 그 아이의 엄마는 아이를 달래고 있었지만, 아이는 쉽게 진정되지 않았습니다.
+                        </p>
+                        <p class="text-gray-700 leading-relaxed korean-text mt-4">
+                            그래서 저는 근처에 있는 장난감 가게에서 작은 인형을 사서 아이에게 주었습니다. 아이는 인형을 보고 웃기 시작했습니다. 그 모습을 보고 아이의 엄마도 안도의 한숨을 쉬었습니다.
+                        </p>
+                        <p class="text-gray-700 leading-relaxed korean-text mt-4">
+                            이 경험을 통해 작은 친절이 누군가에게 큰 도움이 될 수 있다는 것을 다시 한번 느꼈습니다. 앞으로도 주변에서 도움이 필요한 사람들이 있으면 적극적으로 도와야겠습니다.
+                        </p>
+                        <div class="mt-4 text-sm text-orange-700">
+                            <strong>Word count:</strong> Approximately 280 words
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Writing Prompt 2 -->
+            <article class="bg-white rounded-2xl shadow-lg p-8 mb-8">
+                <div class="flex items-center justify-between mb-6">
+                    <span class="px-3 py-1 bg-orange-100 text-orange-700 rounded-full text-sm font-medium">Task 54 - Opinion</span>
+                    <span class="text-gray-500 text-sm">400-600 words</span>
+                </div>
+                
+                <h2 class="text-2xl font-bold text-gray-800 mb-4 korean-text">현대 사회의 기술과 삶</h2>
+                
+                <div class="bg-gray-50 rounded-xl p-6 mb-6">
+                    <p class="text-gray-700 korean-text">
+                        다음의 주제에 대해 여러분의 의견을 논리적으로 써 주세요.
+                    </p>
+                    <div class="mt-4 p-4 bg-white rounded-lg border-l-4 border-orange-500">
+                        <p class="font-bold text-gray-800 korean-text">"스마트폰과 인터넷이 우리의 삶을 더 좋게 만들었는가?"</p>
+                    </div>
+                    <ul class="mt-4 space-y-2 text-gray-700 korean-text">
+                        <li>• 이 주제에 대한 여러분의 의견을 써 주세요.</li>
+                        <li>• Your opinion에 대한 구체적인 예시를 들어 설명해 주세요.</li>
+                        <li>• 장단점을 모두 고려하여 균형 잡힌 시각으로 써 주세요.</li>
+                    </ul>
+                </div>
+
+                <!-- Writing Area -->
+                <div class="mb-6">
+                    <div class="flex items-center justify-between mb-2">
+                        <label class="font-medium text-gray-700">Your Answer:</label>
+                        <span id="word-count-2" class="text-sm text-gray-500">0 words</span>
+                    </div>
+                    <textarea 
+                        id="writing-area-2" 
+                        class="w-full h-80 p-4 border rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-orange-500 korean-text text-lg"
+                        placeholder="여기에 한국어로 작성하세요..."
+                    ></textarea>
+                </div>
+
+                <!-- Sample Answer -->
+                <div class="border-t pt-6">
+                    <button class="show-sample text-orange-600 hover:text-orange-800 font-medium flex items-center space-x-2">
+                        <span>Show Sample Answer</span>
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <div class="sample-answer hidden mt-4 p-6 bg-orange-50 rounded-xl">
+                        <h4 class="font-bold text-orange-800 mb-3">Sample Answer:</h4>
+                        <p class="text-gray-700 leading-relaxed korean-text">
+                            현대 사회에서 스마트폰과 인터넷은 우리의 삶에 큰 변화를 가져왔습니다. 저는 이러한 기술들이 궁극적으로 우리의 삶을 더 좋게 만들었다고 생각합니다. 물론 단점도 있지만, 장점이 훨씬 더 크다고 생각합니다.
+                        </p>
+                        <p class="text-gray-700 leading-relaxed korean-text mt-4">
+                            첫째, 스마트폰과 인터넷은 의사소통을 크게 향상시켰습니다. 과거에는 먼 거리에 있는 사람들과 소통하기가 어려웠지만,现在는 видеозвонок과 메시지를 통해 언제든지 연락할 수 있습니다. 특히 해외에 있는 가족이나 친구들과의 연결이 훨씬 쉬워졌습니다.
+                        </p>
+                        <p class="text-gray-700 leading-relaxed korean-text mt-4">
+                            둘째, 정보에 대한 접근성이 크게 향상되었습니다. 인터넷을 통해 우리는 언제든지 필요한 정보를 빠르게 얻을 수 있습니다. 교육 자료, 뉴스, 연구 논문 등 다양한 정보가 온라인에서 무료로 제공되고 있습니다.
+                        </p>
+                        <p class="text-gray-700 leading-relaxed korean-text mt-4">
+                            물론 스마트폰과 인터넷의 남용은 개인정보 유출, 중독, 사회적 고립 등의 문제를 야기할 수 있습니다. 하지만 이러한 문제들은 기술을 올바르게 사용함으로써 해결할 수 있다고 생각합니다.
+                        </p>
+                        <div class="mt-4 text-sm text-orange-700">
+                            <strong>Word count:</strong> Approximately 450 words
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- More Prompts Placeholder -->
+            <div class="text-center py-12 text-gray-500">
+                <svg class="w-16 h-16 mx-auto mb-4 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
+                </svg>
+                <p class="text-lg">More writing prompts coming soon!</p>
+                <p class="text-sm mt-2">Add your own writing exercises to this section.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12 mt-12">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">TOPIK II Master</h3>
+                    <p class="text-gray-400">Your comprehensive guide to mastering Korean proficiency for the TOPIK II exam.</p>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="vocabulary.html" class="hover:text-white transition">Vocabulary</a></li>
+                        <li><a href="reading.html" class="hover:text-white transition">Reading</a></li>
+                        <li><a href="listening.html" class="hover:text-white transition">Listening</a></li>
+                        <li><a href="writing.html" class="hover:text-white transition">Writing</a></li>
+                        <li><a href="grammar.html" class="hover:text-white transition">Grammar</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">About TOPIK II</h4>
+                    <p class="text-gray-400">TOPIK II is the intermediate-advanced level test of the Test of Proficiency in Korean, designed for levels 3-6.</p>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2026 TOPIK II Master. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        // Word count functionality
+        function updateWordCount(textareaId, countId) {
+            const textarea = document.getElementById(textareaId);
+            const count = document.getElementById(countId);
+            if (textarea && count) {
+                textarea.addEventListener('input', function() {
+                    const text = this.value.trim();
+                    const words = text ? text.split(/\s+/).length : 0;
+                    count.textContent = words + ' words';
+                });
+            }
+        }
+
+        updateWordCount('writing-area-1', 'word-count-1');
+        updateWordCount('writing-area-2', 'word-count-2');
+
+        // Show sample answer
+        document.querySelectorAll('.show-sample').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const sample = this.nextElementSibling;
+                const icon = this.querySelector('svg');
+                sample.classList.toggle('hidden');
+                icon.classList.toggle('rotate-180');
+                this.querySelector('span').textContent = sample.classList.contains('hidden') ? 'Show Sample Answer' : 'Hide Sample Answer';
+            });
+        });
+    </script>
+</body>
+</html>

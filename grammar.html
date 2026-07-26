@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grammar - TOPIK II Master</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-gray-50 font-sans">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <a href="index.html" class="flex items-center space-x-2">
+                        <span class="text-2xl font-bold text-blue-600">TOPIK</span>
+                        <span class="text-2xl font-light text-gray-600">II</span>
+                    </a>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="text-gray-600 hover:text-blue-600 transition">Home</a>
+                    <a href="vocabulary.html" class="text-gray-600 hover:text-blue-600 transition">Vocabulary</a>
+                    <a href="reading.html" class="text-gray-600 hover:text-blue-600 transition">Reading</a>
+                    <a href="listening.html" class="text-gray-600 hover:text-blue-600 transition">Listening</a>
+                    <a href="writing.html" class="text-gray-600 hover:text-blue-600 transition">Writing</a>
+                    <a href="grammar.html" class="text-blue-600 font-medium hover:text-blue-800 transition">Grammar</a>
+                </div>
+                <button id="mobile-menu-btn" class="md:hidden text-gray-600">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
+            <div class="px-4 py-2 space-y-2">
+                <a href="index.html" class="block py-2 text-gray-600 hover:text-blue-600">Home</a>
+                <a href="vocabulary.html" class="block py-2 text-gray-600 hover:text-blue-600">Vocabulary</a>
+                <a href="reading.html" class="block py-2 text-gray-600 hover:text-blue-600">Reading</a>
+                <a href="listening.html" class="block py-2 text-gray-600 hover:text-blue-600">Listening</a>
+                <a href="writing.html" class="block py-2 text-gray-600 hover:text-blue-600">Writing</a>
+                <a href="grammar.html" class="block py-2 text-blue-600 font-medium">Grammar</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="bg-gradient-to-r from-red-500 to-pink-600 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4">
+            <h1 class="text-3xl md:text-4xl font-bold mb-4">Grammar Lessons</h1>
+            <p class="text-red-100 text-lg">Master essential Korean grammar patterns for TOPIK II</p>
+        </div>
+    </section>
+
+    <!-- Grammar Content -->
+    <section class="py-8">
+        <div class="max-w-4xl mx-auto px-4">
+            <!-- Grammar Level Filter -->
+            <div class="mb-8 flex flex-wrap gap-4">
+                <button class="px-4 py-2 rounded-lg bg-red-600 text-white font-medium">All Levels</button>
+                <button class="px-4 py-2 rounded-lg bg-gray-200 text-gray-700 hover:bg-gray-300 transition">Level 3</button>
+                <button class="px-4 py-2 rounded-lg bg-gray-200 text-gray-700 hover:bg-gray-300 transition">Level 4</button>
+                <button class="px-4 py-2 rounded-lg bg-gray-200 text-gray-700 hover:bg-gray-300 transition">Level 5</button>
+                <button class="px-4 py-2 rounded-lg bg-gray-200 text-gray-700 hover:bg-gray-300 transition">Level 6</button>
+            </div>
+
+            <!-- Grammar Point 1 -->
+            <article class="bg-white rounded-2xl shadow-lg p-8 mb-8">
+                <div class="flex items-center justify-between mb-6">
+                    <span class="px-3 py-1 bg-red-100 text-red-700 rounded-full text-sm font-medium">Level 3</span>
+                    <span class="text-gray-500 text-sm">Essential</span>
+                </div>
+                
+                <h2 class="text-2xl font-bold text-gray-800 mb-2 korean-text">-(으)면서</h2>
+                <p class="text-lg text-red-600 mb-4">while / at the same time</p>
+                
+                <!-- Explanation -->
+                <div class="bg-gray-50 rounded-xl p-6 mb-6">
+                    <h3 class="font-bold text-gray-800 mb-3">Explanation</h3>
+                    <p class="text-gray-700 leading-relaxed">
+                        This grammar pattern is used to connect two actions that happen simultaneously. It means "while doing A, also doing B" or "at the same time as doing A."
+                    </p>
+                    
+                    <div class="mt-4 p-4 bg-white rounded-lg border-l-4 border-red-500">
+                        <p class="font-bold text-gray-800 mb-2">Structure:</p>
+                        <p class="korean-text text-gray-700">동사 + -(으)면서</p>
+                        <p class="text-sm text-gray-500 mt-2">Verb + -(eu)myeonseo</p>
+                    </div>
+                </div>
+
+                <!-- Examples -->
+                <div class="mb-6">
+                    <h3 class="font-bold text-gray-800 mb-4">Examples</h3>
+                    <div class="space-y-4">
+                        <div class="p-4 bg-red-50 rounded-lg">
+                            <p class="korean-text text-gray-800 font-medium">음악을 들으면서 공부해요.</p>
+                            <p class="text-gray-600 mt-2">I study while listening to music.</p>
+                            <div class="mt-2 text-sm text-red-600">
+                                음악을 듣다 (listen to music) + -(으)면서 + 공부하다 (study)
+                            </div>
+                        </div>
+                        <div class="p-4 bg-red-50 rounded-lg">
+                            <p class="korean-text text-gray-800 font-medium">한국어를 배우면서 한국 문화도了解하고 있어요.</p>
+                            <p class="text-gray-600 mt-2">While learning Korean, I'm also getting to know Korean culture.</p>
+                            <div class="mt-2 text-sm text-red-600">
+                                한국어를 배우다 (learn Korean) + -(으)면서 + 한국 문화를了解하다 (understand Korean culture)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Practice -->
+                <div class="border-t pt-6">
+                    <h3 class="font-bold text-gray-800 mb-4">Practice</h3>
+                    <div class="p-4 bg-gray-50 rounded-lg">
+                        <p class="font-medium text-gray-800 mb-3">Complete the sentence:</p>
+                        <p class="korean-text text-gray-700 mb-4">친구와 대화하면서 _____________.</p>
+                        <input type="text" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-red-500 korean-text" placeholder="Type your answer in Korean...">
+                        <button class="mt-4 px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition">Check Answer</button>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Grammar Point 2 -->
+            <article class="bg-white rounded-2xl shadow-lg p-8 mb-8">
+                <div class="flex items-center justify-between mb-6">
+                    <span class="px-3 py-1 bg-red-100 text-red-700 rounded-full text-sm font-medium">Level 4</span>
+                    <span class="text-gray-500 text-sm">Important</span>
+                </div>
+                
+                <h2 class="text-2xl font-bold text-gray-800 mb-2 korean-text">-ㄹ/을 뿐만 아니라</h2>
+                <p class="text-lg text-red-600 mb-4">not only ... but also</p>
+                
+                <!-- Explanation -->
+                <div class="bg-gray-50 rounded-xl p-6 mb-6">
+                    <h3 class="font-bold text-gray-800 mb-3">Explanation</h3>
+                    <p class="text-gray-700 leading-relaxed">
+                        This grammar pattern is used to add information, meaning "not only A but also B." It emphasizes that both A and B are true or applicable.
+                    </p>
+                    
+                    <div class="mt-4 p-4 bg-white rounded-lg border-l-4 border-red-500">
+                        <p class="font-bold text-gray-800 mb-2">Structure:</p>
+                        <p class="korean-text text-gray-700">명사 + 를/을 + 뿐만 아니라</p>
+                        <p class="text-gray-700 korean-text mt-2">동사/형용사 + ㄹ/을 뿐만 아니라</p>
+                        <p class="text-sm text-gray-500 mt-2">Noun + (r)eul ppuman Ara + Verb/Adjective + (l/eul) ppuman Ara</p>
+                    </div>
+                </div>
+
+                <!-- Examples -->
+                <div class="mb-6">
+                    <h3 class="font-bold text-gray-800 mb-4">Examples</h3>
+                    <div class="space-y-4">
+                        <div class="p-4 bg-red-50 rounded-lg">
+                            <p class="korean-text text-gray-800 font-medium">한국어를 할 뿐만 아니라 중국어도 할 줄 알아요.</p>
+                            <p class="text-gray-600 mt-2">Not only can I speak Korean, but I can also speak Chinese.</p>
+                            <div class="mt-2 text-sm text-red-600">
+                                한국어를 하다 (speak Korean) + -ㄹ 뿐만 아니라 + 중국어도 하다 (also speak Chinese)
+                            </div>
+                        </div>
+                        <div class="p-4 bg-red-50 rounded-lg">
+                            <p class="korean-text text-gray-800 font-medium">이 식당은 음식이 맛있을 뿐만 아니라 가격도 저렴해요.</p>
+                            <p class="text-gray-600 mt-2">This restaurant not only has delicious food, but the prices are also affordable.</p>
+                            <div class="mt-2 text-sm text-red-600">
+                                음식이 맛있다 (food is delicious) + -을 뿐만 아니라 + 가격도 저렴하다 (prices are also affordable)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Practice -->
+                <div class="border-t pt-6">
+                    <h3 class="font-bold text-gray-800 mb-4">Practice</h3>
+                    <div class="p-4 bg-gray-50 rounded-lg">
+                        <p class="font-medium text-gray-800 mb-3">Complete the sentence:</p>
+                        <p class="korean-text text-gray-700 mb-4">서울은 아름다울 뿐만 아니라 _____________.</p>
+                        <input type="text" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-red-500 korean-text" placeholder="Type your answer in Korean...">
+                        <button class="mt-4 px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition">Check Answer</button>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Grammar Point 3 -->
+            <article class="bg-white rounded-2xl shadow-lg p-8 mb-8">
+                <div class="flex items-center justify-between mb-6">
+                    <span class="px-3 py-1 bg-red-100 text-red-700 rounded-full text-sm font-medium">Level 5</span>
+                    <span class="text-gray-500 text-sm">Advanced</span>
+                </div>
+                
+                <h2 class="text-2xl font-bold text-gray-800 mb-2 korean-text">-게 되다</h2>
+                <p class="text-lg text-red-600 mb-4">to come to / to end up</p>
+                
+                <!-- Explanation -->
+                <div class="bg-gray-50 rounded-xl p-6 mb-6">
+                    <h3 class="font-bold text-gray-800 mb-3">Explanation</h3>
+                    <p class="text-gray-700 leading-relaxed">
+                        This grammar pattern indicates a change of state or a situation that has developed over time. It's used to express that something has come to happen or that a situation has changed.
+                    </p>
+                    
+                    <div class="mt-4 p-4 bg-white rounded-lg border-l-4 border-red-500">
+                        <p class="font-bold text-gray-800 mb-2">Structure:</p>
+                        <p class="korean-text text-gray-700">동사 + -게 되다</p>
+                        <p class="text-sm text-gray-500 mt-2">Verb + -ge doeda</p>
+                    </div>
+                </div>
+
+                <!-- Examples -->
+                <div class="mb-6">
+                    <h3 class="font-bold text-gray-800 mb-4">Examples</h3>
+                    <div class="space-y-4">
+                        <div class="p-4 bg-red-50 rounded-lg">
+                            <p class="korean-text text-gray-800 font-medium">한국에 오게 되어서 기뻐요.</p>
+                            <p class="text-gray-600 mt-2">I'm happy that I came to end up coming to Korea.</p>
+                            <div class="mt-2 text-sm text-red-600">
+                                한국에 오다 (come to Korea) + -게 되다 (end up coming)
+                            </div>
+                        </div>
+                        <div class="p-4 bg-red-50 rounded-lg">
+                            <p class="korean-text text-gray-800 font-medium">스마트폰 때문에 매일 인터넷을 사용하게 됐어요.</p>
+                            <p class="text-gray-600 mt-2">Because of smartphones, I ended up using the internet every day.</p>
+                            <div class="mt-2 text-sm text-red-600">
+                                인터넷을 사용하다 (use internet) + -게 되다 (ended up doing)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Practice -->
+                <div class="border-t pt-6">
+                    <h3 class="font-bold text-gray-800 mb-4">Practice</h3>
+                    <div class="p-4 bg-gray-50 rounded-lg">
+                        <p class="font-medium text-gray-800 mb-3">Complete the sentence:</p>
+                        <p class="korean-text text-gray-700 mb-4">친구 때문에 한국 드라마를 보게 _____________.</p>
+                        <input type="text" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-red-500 korean-text" placeholder="Type your answer in Korean...">
+                        <button class="mt-4 px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition">Check Answer</button>
+                    </div>
+                </div>
+            </article>
+
+            <!-- More Grammar Points Placeholder -->
+            <div class="text-center py-12 text-gray-500">
+                <svg class="w-16 h-16 mx-auto mb-4 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                </svg>
+                <p class="text-lg">More grammar lessons coming soon!</p>
+                <p class="text-sm mt-2">Add your own grammar explanations and examples.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12 mt-12">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">TOPIK II Master</h3>
+                    <p class="text-gray-400">Your comprehensive guide to mastering Korean proficiency for the TOPIK II exam.</p>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="vocabulary.html" class="hover:text-white transition">Vocabulary</a></li>
+                        <li><a href="reading.html" class="hover:text-white transition">Reading</a></li>
+                        <li><a href="listening.html" class="hover:text-white transition">Listening</a></li>
+                        <li><a href="writing.html" class="hover:text-white transition">Writing</a></li>
+                        <li><a href="grammar.html" class="hover:text-white transition">Grammar</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">About TOPIK II</h4>
+                    <p class="text-gray-400">TOPIK II is the intermediate-advanced level test of the Test of Proficiency in Korean, designed for levels 3-6.</p>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2026 TOPIK II Master. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
