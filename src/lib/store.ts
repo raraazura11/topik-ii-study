@@ -119,6 +119,40 @@ export interface WritingItem {
   level: number;
 }
 
+// Custom vocabulary (user-added, stored in localStorage)
+const CUSTOM_VOCAB_KEY = 'topik-custom-vocabulary';
+
+export function getCustomVocabulary(): VocabItem[] {
+  try {
+    const stored = localStorage.getItem(CUSTOM_VOCAB_KEY);
+    if (stored) return JSON.parse(stored);
+  } catch {
+    // ignore
+  }
+  return [];
+}
+
+export function addCustomVocabulary(item: Omit<VocabItem, 'id'>): VocabItem[] {
+  const custom = getCustomVocabulary();
+  const newItem: VocabItem = {
+    ...item,
+    id: `custom-${Date.now()}-${Math.random().toString(36).slice(2, 7)}`,
+  };
+  custom.push(newItem);
+  localStorage.setItem(CUSTOM_VOCAB_KEY, JSON.stringify(custom));
+  return custom;
+}
+
+export function deleteCustomVocabulary(id: string): VocabItem[] {
+  const custom = getCustomVocabulary().filter((v) => v.id !== id);
+  localStorage.setItem(CUSTOM_VOCAB_KEY, JSON.stringify(custom));
+  return custom;
+}
+
+export function getAllVocabulary(): VocabItem[] {
+  return [...sampleVocabulary, ...getCustomVocabulary()];
+}
+
 // Sample vocabulary data
 export const sampleVocabulary: VocabItem[] = [
   { id: 'v1', korean: '경제', meaning: 'Economy', example: '한국의 경제가 빠르게 성장하고 있다.', exampleTranslation: "Korea's economy is growing rapidly.", level: 3, category: '사회' },

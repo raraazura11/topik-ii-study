@@ -7,8 +7,17 @@ import { Badge } from '@/components/ui/badge';
 import { Input } from '@/components/ui/input';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Search, RotateCcw, ChevronLeft, ChevronRight, Shuffle } from 'lucide-react';
-import { sampleVocabulary, VocabItem, getProgress, markCompleted, unmarkCompleted } from '@/lib/store';
+import { Search, RotateCcw, ChevronLeft, ChevronRight, Shuffle, Plus, Trash2, X } from 'lucide-react';
+import {
+  getAllVocabulary,
+  addCustomVocabulary,
+  deleteCustomVocabulary,
+  getCustomVocabulary,
+  VocabItem,
+  getProgress,
+  markCompleted,
+  unmarkCompleted,
+} from '@/lib/store';
 
 export default function VocabularyPage() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -18,9 +27,19 @@ export default function VocabularyPage() {
   const [flashcardIndex, setFlashcardIndex] = useState(0);
   const [showAnswer, setShowAnswer] = useState(false);
   const [progress, setProgress] = useState(getProgress());
+  const [allVocab, setAllVocab] = useState<VocabItem[]>(getAllVocabulary());
+  const [showAddForm, setShowAddForm] = useState(false);
+
+  // Add form state
+  const [newKorean, setNewKorean] = useState('');
+  const [newMeaning, setNewMeaning] = useState('');
+  const [newExample, setNewExample] = useState('');
+  const [newExampleTranslation, setNewExampleTranslation] = useState('');
+  const [newLevel, setNewLevel] = useState(3);
+  const [newCategory, setNewCategory] = useState('');
 
   const filteredVocab = useMemo(() => {
-    return sampleVocabulary.filter((item) => {
+    return allVocab.filter((item) => {
       const matchesSearch = !searchQuery ||
         item.korean.includes(searchQuery) ||
         item.meaning.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -28,9 +47,10 @@ export default function VocabularyPage() {
       const matchesLevel = !selectedLevel || item.level === selectedLevel;
       return matchesSearch && matchesLevel;
     });
-  }, [searchQuery, selectedLevel]);
+  }, [searchQuery, selectedLevel, allVocab]);
 
-  const levels = [...new Set(sampleVocabulary.map((v) => v.level))].sort();
+  const levels = [...new Set(allVocab.map((v) => v.level))].sort();
+  const customIds = useMemo(() => new Set(getCustomVocabulary().map((v) => v.id)), [allVocab]);
 
   const toggleComplete = (itemId: string) => {
     const isCompleted = progress.vocabulary.completed.includes(itemId);
@@ -44,6 +64,31 @@ export default function VocabularyPage() {
   const handleSearch = (query: string) => {
     setSearchQuery(query);
     setSearchParams(query ? { search: query } : {});
+  };
+
+  const handleAdd = () => {
+    if (!newKorean.trim() || !newMeaning.trim()) return;
+    addCustomVocabulary({
+      korean: newKorean.trim(),
+      meaning: newMeaning.trim(),
+      example: newExample.trim(),
+      exampleTranslation: newExampleTranslation.trim(),
+      level: newLevel,
+      category: newCategory.trim() || '사용자',
+    });
+    setAllVocab(getAllVocabulary());
+    setNewKorean('');
+    setNewMeaning('');
+    setNewExample('');
+    setNewExampleTranslation('');
+    setNewLevel(3);
+    setNewCategory('');
+    setShowAddForm(false);
+  };
+
+  const handleDelete = (id: string) => {
+    deleteCustomVocabulary(id);
+    setAllVocab(getAllVocabulary());
   };
 
   const shuffleFlashcards = () => {
@@ -66,10 +111,63 @@ export default function VocabularyPage() {
   return (
     <Layout onSearch={handleSearch}>
       <div className="space-y-6">
-        <div>
-          <h1 className="text-2xl font-bold text-foreground">어휘 (Vocabulary)</h1>
-          <p className="text-muted-foreground mt-1">TOPIK II 필수 단어를 학습하세요</p>
+        <div className="flex items-center justify-between">
+          <div>
+            <h1 className="text-2xl font-bold text-foreground">어휘 (Vocabulary)</h1>
+            <p className="text-muted-foreground mt-1">TOPIK II 필수 단어를 학습하세요</p>
+          </div>
+          <Button onClick={() => setShowAddForm(!showAddForm)} className="cursor-pointer">
+            {showAddForm ? <X className="w-4 h-4 mr-2" /> : <Plus className="w-4 h-4 mr-2" />}
+            {showAddForm ? '취소' : '단어 추가'}
+          </Button>
         </div>
+
+        {/* Add Form */}
+        {showAddForm && (
+          <Card className="border-primary/30 bg-primary/5">
+            <CardContent className="py-6 space-y-4">
+              <h3 className="font-semibold text-foreground">새 단어 추가 (Add New Word)</h3>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label className="text-sm font-medium text-foreground mb-1 block">한국어 (Korean) *</label>
+                  <Input placeholder="예: 경제" value={newKorean} onChange={(e) => setNewKorean(e.target.value)} />
+                </div>
+                <div>
+                  <label className="text-sm font-medium text-foreground mb-1 block">의미 (Meaning) *</label>
+                  <Input placeholder="Economy" value={newMeaning} onChange={(e) => setNewMeaning(e.target.value)} />
+                </div>
+                <div>
+                  <label className="text-sm font-medium text-foreground mb-1 block">예문 (Example)</label>
+                  <Input placeholder="한국의 경제가 성장하고 있다." value={newExample} onChange={(e) => setNewExample(e.target.value)} />
+                </div>
+                <div>
+                  <label className="text-sm font-medium text-foreground mb-1 block">예문 번역 (Translation)</label>
+                  <Input placeholder="Korea's economy is growing." value={newExampleTranslation} onChange={(e) => setNewExampleTranslation(e.target.value)} />
+                </div>
+                <div>
+                  <label className="text-sm font-medium text-foreground mb-1 block">레벨 (Level)</label>
+                  <select
+                    value={newLevel}
+                    onChange={(e) => setNewLevel(Number(e.target.value))}
+                    className="w-full h-10 px-3 rounded-md border border-input bg-background text-foreground text-sm"
+                  >
+                    <option value={3}>Level 3</option>
+                    <option value={4}>Level 4</option>
+                    <option value={5}>Level 5</option>
+                    <option value={6}>Level 6</option>
+                  </select>
+                </div>
+                <div>
+                  <label className="text-sm font-medium text-foreground mb-1 block">카테고리 (Category)</label>
+                  <Input placeholder="예: 사회, 문화" value={newCategory} onChange={(e) => setNewCategory(e.target.value)} />
+                </div>
+              </div>
+              <Button onClick={handleAdd} disabled={!newKorean.trim() || !newMeaning.trim()} className="cursor-pointer">
+                <Plus className="w-4 h-4 mr-2" /> 추가하기 (Add)
+              </Button>
+            </CardContent>
+          </Card>
+        )}
 
         <Tabs defaultValue="list" className="w-full">
           <TabsList className="grid w-full max-w-md grid-cols-2">
@@ -113,6 +211,10 @@ export default function VocabularyPage() {
               </div>
             </div>
 
+            <p className="text-sm text-muted-foreground">
+              {filteredVocab.length} 단어 (words) · {customIds.size} 사용자 추가 (custom)
+            </p>
+
             {/* Vocabulary List */}
             <div className="space-y-3">
               {filteredVocab.map((item) => (
@@ -131,9 +233,23 @@ export default function VocabularyPage() {
                           <Badge variant="secondary" className="text-xs">Lv.{item.level}</Badge>
                           <Badge variant="outline" className="text-xs">{item.category}</Badge>
                         </div>
-                        <p className="text-sm text-foreground/80 mt-2">{item.example}</p>
-                        <p className="text-xs text-muted-foreground mt-1">{item.exampleTranslation}</p>
+                        {item.example && (
+                          <>
+                            <p className="text-sm text-foreground/80 mt-2">{item.example}</p>
+                            <p className="text-xs text-muted-foreground mt-1">{item.exampleTranslation}</p>
+                          </>
+                        )}
                       </div>
+                      {customIds.has(item.id) && (
+                        <Button
+                          variant="ghost"
+                          size="icon"
+                          className="text-destructive hover:text-destructive cursor-pointer flex-shrink-0"
+                          onClick={() => handleDelete(item.id)}
+                        >
+                          <Trash2 className="w-4 h-4" />
+                        </Button>
+                      )}
                     </div>
                   </CardContent>
                 </Card>
